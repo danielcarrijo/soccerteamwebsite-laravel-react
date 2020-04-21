@@ -1,0 +1,207 @@
+
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+.caption_pic1 {
+  position: absolute;
+  top: 40%;
+  left: 16px;
+  color: white;
+  margin-left: 3rem;
+
+}
+
+.justify {
+  text-align:justify;
+}
+
+.bg-dblue {background: #305489;}
+
+
+.test {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.c2Style {
+  background: url('../img/jogadores3.jpg');
+  background-attachment: fixed;  background-size: cover;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  color: white;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.c3Style {
+  background: url('../img/titulo.png');
+  background-attachment: fixed;  background-size: cover;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: 50% 20%;
+  color: white;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.c4Style {
+  background: url('../img/historia.jpg');
+  background-attachment: fixed;  background-size: cover;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center -10%;
+  color: white;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.underlined {
+  border-bottom: 1px solid white;
+}
+
+
+
+
+
+
+#component1 {
+  background-color: #000018;
+}
+
+#component1 .main-title {
+    font-size: 40pt;
+}
+
+#pic1 {
+  opacity: 0.2;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
+.title {
+    font-size: 5vw;
+    margin-bottom: 4.5rem;
+    text-align: center;
+  }
+
+.titles {
+  margin-left: 0.5rem;
+}
+
+.bg-blue-transition {
+  background-color: cornflowerblue;
+  transition: 1s;
+}
+
+.remove {
+  transition: 1s;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.border-0 {
+  border:none
+}
+
+.position-title {
+  margin-left:2rem;
+  width: 94.2%;
+  font-size: 16pt;
+}
+
+.mt-10 {
+  margin-top: 5.7rem;
+}
+
+
+
+.card-description {
+  background-color: #000080;
+  width: 97%;
+  margin-left: 0.35rem;
+}
+
+.div_component {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.crac {
+  background: url('../img/Imagem1.jpg');
+  
+}
+
+.nome {
+  font-size: 8pt;
+}
+
+@media (max-width: 608px) {
+    .title {
+      font-size: 6vh;
+      margin-bottom: 2rem;
+    }
+    .titles {
+      text-align: center;
+      margin-left: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+  .position-title {
+    width: 93%;
+  }
+}
+
+@media (max-width: 992px) {
+  .position-title {
+    width: 91%;
+  }
+}
+
+@media (max-width: 768px) {
+  .position-title {
+    width: 79%;
+  }
+  .card-description {
+    width: 88.6%;
+  }
+}
+@media (max-width: 576px) {
+  .position-title {
+    width: 405px;
+  }
+  .card-description {
+    width: 405px;
+  }
+}
+
+@media (max-width: 517px) {
+  .position-title {
+    width: 86%;
+  }
+  .card-description {
+    width: 98%;
+  }
+}
