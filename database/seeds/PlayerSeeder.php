@@ -19,7 +19,7 @@ class PlayerSeeder extends Seeder
             'birthdate' => '14/11/1998',
             'position' => 0,    
             'city' => 'Catalão - GO',
-            'img' => 'player1.img'
+            'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Daniel Carrijo',
@@ -28,7 +28,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '14/11/1998',
                 'position' => 3,    
                 'city' => 'Catalão - GO',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Daniel Carrijo',
@@ -37,7 +37,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '14/11/1998',
                 'position' => 0,    
                 'city' => 'Catalão - GO',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Jorge',
@@ -46,7 +46,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '23/01/1991',
                 'position' => 1,    
                 'city' => 'Uberlândia - MG',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Natanel',
@@ -55,7 +55,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '01/02/2000',
                 'position' => 1,    
                 'city' => 'São Paulo - SP',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Daniel Carrijo',
@@ -64,7 +64,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '14/11/1998',
                 'position' => 2,    
                 'city' => 'Catalão - GO',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
             [
                 'name' => 'Daniel Carrijo',
@@ -73,7 +73,7 @@ class PlayerSeeder extends Seeder
                 'birthdate' => '14/11/1998',
                 'position' => 2,    
                 'city' => 'Catalão - GO',
-                'img' => 'player1.img'
+                'img' => 'player1.jpg'
             ],
         ];
         DB::table('players')->insert($players);
