@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
+Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@login');
+Route::get('jerseys', 'PlayerController@jerseys');
 Route::get('players/','PlayerController@index');
 Route::get('players/{position}','PlayerController@position');
+Route::post('/upload-file', 'PlayerController@uploadFile');
+Route::post('/players','PlayerController@store')->middleware('auth:api');

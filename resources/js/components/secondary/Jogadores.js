@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Spinner from './../Spinner'
 import Cards from './Cards'
 import Header from './../Header'
+import { Transition } from 'react-transition-group'
 
 export class Jogadores extends Component {
     constructor(props) {
@@ -9,6 +10,9 @@ export class Jogadores extends Component {
         this.state = {
             appear : {
                 display: 'none'
+            },
+            spinner : {
+                display:''
             }
         }
     }
@@ -16,16 +20,19 @@ export class Jogadores extends Component {
         setTimeout(() => {
             this.setState({
                 appear: {
-                    display: ''
+                    display: '',
                 }
             })
-        }, 1000);
+            this.setState({spinner: {display : 'none'}})
+        }, 3000);
     }
+    
     render() {
-        const { players } = this.state
         return (
             <div height="100%" width="100%">
-                {/* <Spinner /> */}
+                <div className="spinner" style={this.state.spinner}>
+                <Spinner />
+                </div>
                 <div style={this.state.appear} className="crac rounded">
                     <Header className="mb-3"/>
                     <div className="mt-5 container" style={{background:'white'}}>

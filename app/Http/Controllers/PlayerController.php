@@ -28,11 +28,15 @@ class PlayerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function jerseys()
     {
-        //
+        $players = Player::all();
+        $jerseys = [];
+        foreach($players as $player) {
+            array_push($jerseys,$player->jersey);
+        }
+        return response()->json($jerseys);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,7 +45,29 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $player = new Player;
+        $player->name = $request->name;
+        $player->complete_name = $request->complete_name;
+        $player->position = intval($request->position);
+        $player->jersey = intval($request->jersey);
+        $player->birthdate = $request->birthdate;
+        $player->city = $request->city;
+        $player->img = $request->image;
+        $player->save();
+        return response()->json([
+            'status' => (bool) $player,
+            'data'   => $player,
+            'message' => $player ? 'Jogador criado' : 'Erro ao criar jogador'
+        ]);
+    }
+
+    public function uploadFile(Request $request)
+    {
+        if($request->hasFile('image')){
+            $name = time()."_".$request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('img'), $name);
+        }
+        return response()->json($name,201);
     }
 
     /**

@@ -8,7 +8,7 @@ use Validator;
 use Illuminate\Http\Request;
 
 
-class AuthController extends Controller
+class UserController extends Controller
 {
     protected function generateAccessToken($user)
     {
@@ -36,24 +36,19 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
-    public function login(Request $request) {
-        $request->validate([
-            'email' => 'required|email|exists:users,email', 
-            'password' => 'required'
-        ]);
-
+    public function login(Request $request)
+    {
         $status = 401;
         $response = ['error' => 'Unauthorised'];
-
-        if( Auth::attempt($request->only(['email', 'password'])) ) {
-            $user = Auth::user();
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
             $status = 200;
-            $token = $user->createToken('CRAC_Daniel');
             $response = [
-                'user' => $user,
-                'token' => $token->accessToken
+                'user' => Auth::user(),
+                'token' => Auth::user()->createToken('CRAC_Daniel')->accessToken,
             ];
         }
         return response()->json($response, $status);
     }
+
 }

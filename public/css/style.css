@@ -133,6 +133,13 @@
 }
 
 
+.errorMessage {
+  color: red;
+  font-size: 0.75em;
+  display: relative;
+}
+
+
 
 .card-description {
   background-color: #000080;
@@ -149,8 +156,9 @@
 }
 
 .crac {
-  background: url('../img/Imagem1.jpg');
-  
+  background: url('../img/fundo.jpg') no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .nome {
@@ -204,4 +212,11 @@
   .card-description {
     width: 98%;
   }
+}
+
+
+.spinner {
+  position: absolute;
+  top: 45%;
+  left: 45%;
 }

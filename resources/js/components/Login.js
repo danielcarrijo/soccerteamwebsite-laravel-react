@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import Cookies from 'js-cookie'
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -38,8 +38,8 @@ export class Login extends Component {
     }
 
     componentDidMount() {
-        if(localStorage.getItem('CRAC_Daniel.jwt') != null) {
-            let user = JSON.parse(localStorage.getItem('CRAC_Daniel.user'))
+        if(Cookies.get('CRAC_Daniel.jwt') != null) {
+            let user = JSON.parse(Cookies.get('CRAC_Daniel.user'))
             console.log(user)
             console.log(user.name)
             console.log('entrei')
@@ -53,8 +53,8 @@ export class Login extends Component {
 
     logout(){
         const { history } = this.props
-        localStorage.removeItem('CRAC_Daniel.jwt')
-        localStorage.removeItem('CRAC_Daniel.user')
+        Cookies.remove('CRAC_Daniel.jwt')
+        Cookies.remove('CRAC_Daniel.user')
         history.push('/')
     }
 
@@ -67,13 +67,14 @@ export class Login extends Component {
             axios.post('api/login', {email, password}).then(response => {
                 let user = response.data.user
 
-                localStorage.setItem('CRAC_Daniel.user', JSON.stringify(user)) 
-                localStorage.setItem('CRAC_Daniel.jwt', response.data.token)
-
-                if (localStorage.getItem('CRAC_Daniel.jwt') != null) {
+                Cookies.set('CRAC_Daniel.user', JSON.stringify(user)) 
+                Cookies.set('CRAC_Daniel.jwt', response.data.token)
+                axios.defaults.headers.common['Content-Type'] = 'application/json'
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('CRAC_Daniel.jwt')
+                if (Cookies.get('CRAC_Daniel.jwt') != null) {
+                    const { from } = this.props.location.state || {from: {pathname: '/'}}
                     const { history } = this.props
-                    console.log('entrei')
-                    history.push('/')
+                    history.push(from.pathname)
                 }
             }).catch(err => {
                 console.log(err)

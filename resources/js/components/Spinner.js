@@ -5,7 +5,7 @@ import React from 'react'
     render() {
      return(
       <Loader
-         type="Puff"
+         type="ThreeDots"
          color="#00BFFF"
          height={100}
          width={100}
