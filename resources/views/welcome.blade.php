@@ -16,7 +16,7 @@
         <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app" class="full-height"></div>
         <script src="{{ asset('js/app.js') }}"></script>
         
     </body>

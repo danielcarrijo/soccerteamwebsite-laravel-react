@@ -21,3 +21,5 @@ Route::get('players/','PlayerController@index');
 Route::get('players/{position}','PlayerController@position');
 Route::post('/upload-file', 'PlayerController@uploadFile');
 Route::post('/players','PlayerController@store')->middleware('auth:api');
+Route::post('/players/{player}','PlayerController@update')->middleware('auth:api');
+Route::post('/playersPicture/{player}','PlayerController@updatePicture')->middleware('auth:api');

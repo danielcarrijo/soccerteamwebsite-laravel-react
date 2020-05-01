@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Cookies from 'js-cookie'
 import axios from 'axios'
+import Sidebar from './Sidebar'
 const formValid = ({formErrors, ...rest}) => {
   
     let valid = true;
@@ -135,9 +136,10 @@ export class CJogadores extends Component {
     render() {
         const { formErrors } = this.state
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
-                    <div className="col-12">
+                    <Sidebar/>
+                    <div className="full-height col-lg-8 col-sm-12 mt-1 border-left mt-2">
                         <div className="card mt-4">
                             <div className="card-header">
                                 <div className="card-title">Cadastrar novo jogador</div>

@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import Cookies from 'js-cookie'
 import Login from './Login'
 import Jogadores from './secondary/Jogadores'
+import Titulos from './secondary/Titulos'
 import CJogadores from './auth/CJogadores'
 import Example from './Example'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Dashboard from './auth/Dashboard';
+import EditJogadores from './auth/EditJogadores';
  
 const user =  () => {
     if (Cookies.get('CRAC_Daniel.jwt') != null) {
@@ -43,14 +45,17 @@ class App extends Component {
     
     render () {
         return (
-            <BrowserRouter >
+            <BrowserRouter>
                 <div style={bg}>
                 <Switch>
                     <Route exact path='/' component={Example} />
                     <LoginRoute  path='/login' component={Login} />
                     <Route  path='/jogadores' component={Jogadores}/>
+                    <Route  path='/titulos' component={Titulos}/>
                     <PrivateRoute path="/dashboard" component = {Dashboard} />
                     <PrivateRoute path="/cadastrar-jogador" component = {CJogadores} />
+                    <PrivateRoute path="/editar-jogador" component = {EditJogadores} />
+                    
                 </Switch>
                 </div>
             </BrowserRouter>
@@ -59,7 +64,8 @@ class App extends Component {
 }
 
 const bg = {
-    background:'#fff'
+    background:'#fff',
+    height: '100%'
 }
 
 if (document.getElementById('app')) {

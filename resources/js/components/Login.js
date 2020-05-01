@@ -100,10 +100,10 @@ export class Login extends Component {
         const { formErrors } = this.state;
         const { text } = this.state;
         return (
-            <div className="container">
-                <div className="row justify-content-center mt-5">
-                    <div className="col-md-8">
-                        <div className="card">
+            <div className="container full-height">
+                <div className="row justify-content-center mt-5 full-height">
+                    <div className="col-md-8 full-height">
+                        <div className="card full-height" >
                             <div className="card-header">
                                 <div className="card-title">Login</div>
                             </div>

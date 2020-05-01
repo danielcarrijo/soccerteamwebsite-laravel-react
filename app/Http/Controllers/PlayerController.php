@@ -101,8 +101,25 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $status = $player->update(
+            $request->only(['name','complete_name', 'jersey', 'position', 'city','birthdate', 'image'])
+        );
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Product Updated!' : 'Error Updating Product'
+        ]);
     }
+
+    public function updatePicture(Request $request, Player $player)
+    {
+        $player->img = $request->img;
+        $status = $player->save();
+        return response()->json([
+            'status' => $status,
+            'message' => $status ? 'Product Updated!' : 'Error Updating Product'
+        ]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

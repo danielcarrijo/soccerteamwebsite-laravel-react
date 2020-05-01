@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Spinner from './../Spinner'
 import Cards from './Cards'
 import Header from './../Header'
-import { Transition } from 'react-transition-group'
 
 export class Jogadores extends Component {
     constructor(props) {
