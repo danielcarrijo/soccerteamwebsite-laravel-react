@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { Redirect } from 'react-router-dom'
+import Confirmation from './Confirmation'
 
 export class CardImages extends Component {
     constructor(props) {
@@ -11,8 +11,15 @@ export class CardImages extends Component {
             attachment: null
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
         this.handleFile = this.handleFile.bind(this)
-        
+    }
+
+    handleDelete() {
+        axios.delete(`api/players/${this.props.id}`, { headers: {Accept: 'application/json', Authorization: "Bearer " +  Cookies.get('CRAC_Daniel.jwt')}}).then(response => {
+            location.reload()
+        })
     }
 
     handleClick(e) {
@@ -38,9 +45,10 @@ export class CardImages extends Component {
     }
     render() {
         return (
-            <div className="card-body">
+            <div className="card-body" style = {div}>
                 <img src={`img/${this.props.player.img}`} className="img img-fluid" onClick={this.handleClick} />
                 <input ref={input => this.inputElement = input} style={invisible} type="file" name="image" onChange={this.handleFile}/>
+                <Confirmation triggerDeletePlayer = {this.handleDelete}/>
             </div>
         )
     }
@@ -48,6 +56,10 @@ export class CardImages extends Component {
 
 const invisible = {
     display: 'none'
+}
+
+const div = {
+    position : 'relative'
 }
 
 export default CardImages

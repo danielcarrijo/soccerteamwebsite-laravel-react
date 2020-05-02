@@ -127,23 +127,31 @@ export class Jogador extends Component {
     render() {
         const { formErrors } = this.state
         return (
-            <div className="card-footer card-description rounded mt-1">
-                <h2 className="text-white"><input className="input-jogadores" onChange={this.handleChange} value={this.state.jersey} name="jersey" /></h2> 
-                <span className="errorMessage">.{formErrors.jersey}</span>
-                <h2 className="text-white"><input className="input-jogadores" onChange={this.handleChange} value={this.state.name} name="name" /></h2>
-                <span className="errorMessage">.{formErrors.name}</span>
+            <div className="card-footer card-description rounded mt-1" style={div}>
+                <h4 className="text-white"><input className="input-jogadores" onChange={this.handleChange} value={this.state.jersey} name="jersey" /></h4> 
+                <span className="errorMessage mt-2" ><span style={{opacity: 0}}>.</span>{formErrors.jersey}</span>
+                <h4 className="text-white"><input className="input-jogadores" onChange={this.handleChange} value={this.state.name} name="name" /></h4>
+                <span className="errorMessage mt-2" ><span style={{opacity: 0}}>.</span>{formErrors.name}</span>
                 <h6 className="text-white "><input className="input-jogadores" onChange={this.handleChange} value={this.state.complete_name} name="complete_name"/></h6>
-                <span className="errorMessage">.{formErrors.complete_name}</span>
+                <span className="errorMessage mt-2" ><span style={{opacity: 0}}>.</span>{formErrors.complete_name}</span>
                 <hr className="bg-white" />
                 <p className="text-white ">Data de nascimento: <input className="input-jogadores" onChange={this.handleDate} value={this.state.birthdate} name="birthdate" /></p>
-                <span className="errorMessage">.{formErrors.birthdate}</span>
+                <span className="errorMessage mt-2" ><span style={{opacity: 0}}>.</span>{formErrors.birthdate}</span>
                 <hr className="bg-white"/>
                 <p className="text-white ">Cidade natal: <input className="input-jogadores" onChange={this.handleChange} value={this.state.city} name="city" /></p>
-                <span className="errorMessage">.{formErrors.city}</span> 
+                <span className="errorMessage mt-2" ><span style={{opacity: 0}}>.</span>{formErrors.city}</span> 
                 <button className="btn btn-light" onClick={this.handleSubmit}>Salvar</button>
             </div>
         )
     }
+}
+
+const position = {
+    position : 'absolute'
+}
+
+const div = {
+    position : 'relative'
 }
 
 export default Jogador

@@ -129,6 +129,7 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $status = $player->delete();
+        return response()->json($status);
     }
 }

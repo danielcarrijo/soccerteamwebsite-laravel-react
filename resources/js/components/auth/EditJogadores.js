@@ -36,7 +36,7 @@ export class EditJogadores extends Component {
                         <div className="row full-height">
                             <Sidebar/>
                             <div className="full-height col-lg-10 col-sm-12 border-left">
-                                <div className='container'>
+                                <div className='container ml-4'>
                                     Para trocar uma imagem, clique sobre a mesma, e suba uma nova imagem nos formatos .png ou .jpg
                                 </div>
                                 <Cards url="api/players/0" title="GOLEIROS" />

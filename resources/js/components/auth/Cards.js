@@ -37,7 +37,7 @@ export class Cards extends Component {
     render() {
         const { players } = this.state
         return (
-            <div className="container mt-5">
+            <div className="container mb-5">
                     <div className="row">
                         <div className="bg-primary  form-control position-title text-white bolder mt-5">{this.props.title}</div>
                         {players.map(player => (
