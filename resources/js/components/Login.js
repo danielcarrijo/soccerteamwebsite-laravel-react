@@ -72,7 +72,7 @@ export class Login extends Component {
                 axios.defaults.headers.common['Content-Type'] = 'application/json'
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('CRAC_Daniel.jwt')
                 if (Cookies.get('CRAC_Daniel.jwt') != null) {
-                    const { from } = this.props.location.state || {from: {pathname: '/'}}
+                    const { from } = this.props.location.state || {from: {pathname: '/dashboard'}}
                     const { history } = this.props
                     history.push(from.pathname)
                 }

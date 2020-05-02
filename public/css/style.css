@@ -142,6 +142,10 @@
   margin-top: 7rem;
 }
 
+.border_red {
+  border : 1px solid red;
+}
+
 .errorMessage {
   color: red;
   font-size: 0.75em;

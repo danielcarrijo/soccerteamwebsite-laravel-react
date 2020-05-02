@@ -9,6 +9,8 @@ import Example from './Example'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Dashboard from './auth/Dashboard';
 import EditJogadores from './auth/EditJogadores';
+import CadastrarTitulo from './auth/titulo/CadastrarTitulo';
+import EditarTitulos from './auth/titulo/EditarTitulos';
  
 const user =  () => {
     if (Cookies.get('CRAC_Daniel.jwt') != null) {
@@ -55,7 +57,8 @@ class App extends Component {
                     <PrivateRoute path="/dashboard" component = {Dashboard} />
                     <PrivateRoute path="/cadastrar-jogador" component = {CJogadores} />
                     <PrivateRoute path="/editar-jogador" component = {EditJogadores} />
-                    
+                    <PrivateRoute path="/cadastrar-titulo" component = {CadastrarTitulo} />
+                    <PrivateRoute path="/editar-titulos" component = {EditarTitulos} />
                 </Switch>
                 </div>
             </BrowserRouter>

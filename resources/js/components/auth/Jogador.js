@@ -13,6 +13,10 @@ const formValid = ({formErrors, ...rest}) => {
     });
     return valid; 
   }
+
+  
+
+  
 export class Jogador extends Component {
     constructor(props) {
         super(props)

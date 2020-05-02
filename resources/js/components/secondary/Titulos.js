@@ -18,18 +18,20 @@ export class Titulos extends Component {
     render() {
         const { titulos } = this.state
         return (
-            <div height="100%" width="100%">
+            <div>
                 <div className="crac">
-                    <Header className="mb-3"/>
+                    <Header/>
                     <div className="mt-10 container" style={{background:'white'}}>
                         {titulos.map(titulo => (
-                            <div key={titulo.id}  className='my-5'>
-                                <span className="my-1 text-white" style={{opacity : 0}}>.</span>
+                            <div key={titulo.id}  className='mt-5'>
+                                <span className="text-white" style={{opacity : 0}}>.</span>
                                 <h4 className="bolder mb-5 ">{titulo.title}</h4>
-                                <div className="col-8">
-                                    <img className="img img-fluid mb-5" src={`img/${titulo.img}`} />
+                                <div className="col-lg-8 col-sm-12">
+                                    <img className="img img-fluid mb-5" src={`img/titulo/${titulo.img}`} />
                                 </div>
-                                <p className='lead justify'>{titulo.description}</p>
+                                {titulo.description.split('\n').map(paragraph => (
+                                    <p className='lead justify'>{paragraph}</p>
+                                ))}
                             </div>
                         ))}
                     </div>
@@ -38,5 +40,6 @@ export class Titulos extends Component {
         )
     }
 }
+
 
 export default Titulos

@@ -23,11 +23,14 @@ class TitleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function uploadFile(Request $request)
     {
-        //
+        if($request->hasFile('image')){
+            $name = time()."_".$request->file('image')->getClientOriginalName();
+            $request->file('image')->move(public_path('img/titulo'), $name);
+        }
+        return response()->json($name,201);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -36,7 +39,12 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = new Title;
+        $title->title = $request->title;
+        $title->description = $request->description;
+        $title->img = $request->image;
+        $status = $title->save();
+        return response()->json($status);
     }
 
     /**
@@ -70,7 +78,10 @@ class TitleController extends Controller
      */
     public function update(Request $request, Title $title)
     {
-        //
+        $status = $title->update(
+            $request->only(['title','description','img'])
+        );
+        return response()->json($status);
     }
 
     /**

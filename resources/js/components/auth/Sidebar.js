@@ -49,14 +49,14 @@ export class Sidebar extends Component {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Health'])}}">
-                    Health
-                    </a>
+                    <Link className="nav-link text-white" to="/cadastrar-titulo">
+                    Cadastrar Título
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Programming'])}}">
-                    Programming
-                    </a>
+                    <Link className="nav-link text-white" to="/editar-titulos">
+                    Editar Títulos
+                    </Link >
                 </li>
                 <li className="nav-item">
                     <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Games'])}}">
