@@ -16,16 +16,16 @@ const formValid = ({formErrors, ...rest}) => {
     return valid; 
   }
 
-export class Titulo extends Component {
+export class Section extends Component {
     constructor(props) {
         super(props) 
         this.state = {
             title : '',
-            description : '',
+            paragraph : '',
             image : '',
             formErrors :  {
                 title : '',
-                description : '',
+                paragraph : '',
                 image : ''
             }
         }
@@ -37,9 +37,9 @@ export class Titulo extends Component {
     }
     componentDidMount() {
         this.setState({
-            title : this.props.titulo.title,
-            description : this.props.titulo.description,
-            image : this.props.titulo.img
+            title : this.props.section.title,
+            paragraph : this.props.section.paragraph,
+            image : this.props.section.img
         })
     }
     handleFile(e) {
@@ -47,13 +47,23 @@ export class Titulo extends Component {
             if(e.target.files[0] != null && (e.target.files[0].name.split('.').pop() == 'jpg' || e.target.files[0].name.split('.').pop() == 'png') ) {
                 var formData = new FormData();
                 console.log(this.state.image)
-                formData.append("image", e.target.files[0], this.state.image)
-                let headers = {'Content-Type': 'multipart/form-data'}
-                let name = this.state.image
-                axios.post("/api/title-updatePicture", formData , {headers}).then(response =>{
-                    const { history } = this.props
-                    location.reload()
-                })
+                if(this.state.image!=null) {
+                    formData.append("image", e.target.files[0], this.state.image)
+                    let headers = {'Content-Type': 'multipart/form-data'}
+                    let name = this.state.image
+                    axios.post("/api/history-updatePicture", formData , {headers}).then(response =>{
+                        location.reload()
+                    })
+                }
+                else {
+                    formData.append("image", e.target.files[0])
+                    let headers = {'Content-Type': 'multipart/form-data'}
+                    let name = this.state.image
+                    axios.post("/api/history-picture", formData , {headers}).then(response =>{
+                        location.reload()
+                    })
+                }
+                
             }
     }
 
@@ -63,7 +73,7 @@ export class Titulo extends Component {
     }
     handleDelete(e) {
         e.preventDefault()
-        axios.delete(`api/titles/${this.props.titulo.id}`, { headers: {Accept: 'application/json', Authorization: "Bearer " +  Cookies.get('CRAC_Daniel.jwt')}}).then(response => {
+        axios.delete(`api/history/${this.props.section.id}`, { headers: {Accept: 'application/json', Authorization: "Bearer " +  Cookies.get('CRAC_Daniel.jwt')}}).then(response => {
             location.reload()
         })
     }
@@ -76,8 +86,8 @@ export class Titulo extends Component {
             case "title":
                 formErrors.title = (/\S/.test(value)) ? "" : "Escreva um título maior"
                 break;
-            case "description" : 
-                formErrors.description = (/\S/.test(value)) ? "" : "Escreva uma descrição maior"
+            case "paragraph" : 
+                formErrors.paragraph = (/\S/.test(value)) ? "" : "Escreva uma seção maior"
             default:
                 break;
         }
@@ -87,8 +97,9 @@ export class Titulo extends Component {
     handleSubmit(e) {
         e.preventDefault()
         if(formValid(this.state)) {
-            const { title, description} = this.state
-            axios.post(`api/titles/${this.props.titulo.id}`, {title, description}, {headers  : {Accept :'application/json', Authorization: "Bearer " +  Cookies.get('CRAC_Daniel.jwt') }}).then(response => {
+            const { title, paragraph, image } = this.state
+            let img = image
+            axios.post(`api/history/${this.props.section.id}`, {title, paragraph, img}, {headers  : {Accept :'application/json', Authorization: "Bearer " +  Cookies.get('CRAC_Daniel.jwt') }}).then(response => {
                 location.reload()
             })
         }
@@ -96,7 +107,7 @@ export class Titulo extends Component {
     render() {
         const { formErrors } = this.state
         return (
-            <div key={this.props.titulo.id} className="mt-5">
+            <div key={this.props.section.id} className="mt-5">
                 <Confirmation triggerDelete = {this.handleDelete}/>
                 <span className="text-white" style={{opacity : 0}}>.</span>
                 <h4 className="bolder mb-5 ">
@@ -111,21 +122,21 @@ export class Titulo extends Component {
                 </h4>
                 <div className="row justify-content-center">
                     <div className="col-lg-8  col-sm-12">
-                        <img className="img img-fluid mb-5" src={`img/titulo/${this.props.titulo.img}`} onClick={this.handleClick}/>
+                        <img className="img img-fluid mb-5" src={`img/historia/${this.props.section.img}`} onClick={this.handleClick}/>
                         <input ref={input => this.inputElement = input} style={invisible} type="file" name="image" onChange={this.handleFile}/>
                     </div>
                 </div>
                 <textarea 
                         className='lead justify' 
                         style = {input}
-                        name="description"
+                        name="paragraph"
                         onChange = {this.handleChange}
                         value = {
-                            this.state.description
+                            this.state.paragraph
                         }
-                        rows = {parseInt((this.props.titulo.description.length)/100) + 1}
+                        rows = {parseInt((this.props.section.paragraph.length)/100) + 1}
                 ></textarea>
-                    <span className="errorMessage">{formErrors.description}</span>
+                    <span className="errorMessage">{formErrors.paragraph}</span>
 
                 <button onClick={this.handleSubmit} className="btn btn-primary">Salvar</button>
             </div>
@@ -145,4 +156,4 @@ const invisible = {
     opacity : 0
 }
 
-export default Titulo
+export default Section

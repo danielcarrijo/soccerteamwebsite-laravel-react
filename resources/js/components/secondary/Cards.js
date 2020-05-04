@@ -20,7 +20,7 @@ export class Cards extends Component {
                         {players.map(player => (
                             <div className="card col-lg-4 col-xs-12 col-md-6 border-0" key={player.id}>
                                 <div className="card-body">
-                                    <img src={`img/${player.img}`} className="img img-fluid" />
+                                    <img src={`img/jogadores/${player.img}`} className="img img-fluid" />
                                 </div>
                                 <div className="container">
                                     <div className="card-footer card-description rounded mt-1">

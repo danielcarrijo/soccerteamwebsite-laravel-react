@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import Login from './Login'
 import Jogadores from './secondary/Jogadores'
 import Titulos from './secondary/Titulos'
+import Historia from './secondary/Historia'
 import CJogadores from './auth/CJogadores'
 import Example from './Example'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
@@ -11,6 +12,8 @@ import Dashboard from './auth/Dashboard';
 import EditJogadores from './auth/EditJogadores';
 import CadastrarTitulo from './auth/titulo/CadastrarTitulo';
 import EditarTitulos from './auth/titulo/EditarTitulos';
+import CadastrarSecao from './auth/historia/CadastrarSecao';
+import EditarSecao from './auth/historia/EditarSecao';
  
 const user =  () => {
     if (Cookies.get('CRAC_Daniel.jwt') != null) {
@@ -54,11 +57,14 @@ class App extends Component {
                     <LoginRoute  path='/login' component={Login} />
                     <Route  path='/jogadores' component={Jogadores}/>
                     <Route  path='/titulos' component={Titulos}/>
+                    <Route  path='/historia' component={Historia}/>
                     <PrivateRoute path="/dashboard" component = {Dashboard} />
                     <PrivateRoute path="/cadastrar-jogador" component = {CJogadores} />
                     <PrivateRoute path="/editar-jogador" component = {EditJogadores} />
                     <PrivateRoute path="/cadastrar-titulo" component = {CadastrarTitulo} />
                     <PrivateRoute path="/editar-titulos" component = {EditarTitulos} />
+                    <PrivateRoute path="/cadastrar-secao" component = {CadastrarSecao} />
+                    <PrivateRoute path="/editar-secao" component = {EditarSecao} />
                 </Switch>
                 </div>
             </BrowserRouter>

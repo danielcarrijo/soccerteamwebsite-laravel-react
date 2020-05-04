@@ -51,7 +51,7 @@ export default function TransitionsModal(props) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Tem certeza que quer deletar esse registro?</h2>
             <div className="row justify-content-center mt-3">
-              <button onClick={props.triggerDeletePlayer} className=" btn btn-primary">Sim</button>
+              <button onClick={props.triggerDelete} className=" btn btn-primary">Sim</button>
             </div>
             
           </div>

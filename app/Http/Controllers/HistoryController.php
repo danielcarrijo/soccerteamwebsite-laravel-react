@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Title;
+use App\History;
 use Illuminate\Http\Request;
 
-class TitleController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $title = Title::all();
-        return response()->json($title,200);
+        $history = History::all();
+        return response()->json($history,200);
     }
 
     /**
@@ -27,7 +27,7 @@ class TitleController extends Controller
     {
         if($request->hasFile('image')){
             $name = time()."_".$request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('img/titulo'), $name);
+            $request->file('image')->move(public_path('img/historia'), $name);
         }
         return response()->json($name,201);
     }
@@ -36,10 +36,11 @@ class TitleController extends Controller
     {
         if($request->hasFile('image')){
             $name =$request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path('img/titulo'), $name);
+            $request->file('image')->move(public_path('img/historia'), $name);
         }
         return response()->json($name,201);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,21 +49,21 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
-        $title = new Title;
-        $title->title = $request->title;
-        $title->description = $request->description;
-        $title->img = $request->image;
-        $status = $title->save();
+        $history = new History;
+        $history->title = $request->title;
+        $history->paragraph = $request->paragraph;
+        $history->img = $request->image;
+        $status = $history->save();
         return response()->json($status);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function show(Title $title)
+    public function show(History $history)
     {
         //
     }
@@ -70,10 +71,10 @@ class TitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title)
+    public function edit(History $history)
     {
         //
     }
@@ -82,13 +83,13 @@ class TitleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Title  $title
+     * @param  \App\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Title $title)
+    public function update(Request $request, History $history)
     {
-        $status = $title->update(
-            $request->only(['title','description','img'])
+        $status = $history->update(
+            $request->only(['history','paragraph','img'])
         );
         return response()->json($status);
     }
@@ -96,12 +97,12 @@ class TitleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Title  $title
+     * @param  \App\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $title)
+    public function destroy(History $history)
     {
-        $status = $title->delete();
+        $status = $history->delete();
         return response()->json($status);
     }
 }

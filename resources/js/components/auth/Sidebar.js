@@ -59,14 +59,14 @@ export class Sidebar extends Component {
                     </Link >
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Games'])}}">
-                    Games
-                    </a>
+                    <Link className="nav-link text-white" to="/cadastrar-secao">
+                    Cadastrar Seção em História
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Economy'])}}">
-                    Economy
-                    </a>
+                    <Link className="nav-link text-white" to="/editar-secao">
+                    Editar Seção de História
+                    </Link>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link text-white" href="{{route('welcome.filter', ['topic' => 'Others'])}}">

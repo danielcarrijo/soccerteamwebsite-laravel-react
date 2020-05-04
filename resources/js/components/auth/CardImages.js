@@ -46,9 +46,9 @@ export class CardImages extends Component {
     render() {
         return (
             <div className="card-body" style = {div}>
-                <img src={`img/${this.props.player.img}`} className="img img-fluid" onClick={this.handleClick} />
+                <img src={`img/jogadores/${this.props.player.img}`} className="img img-fluid" onClick={this.handleClick} />
                 <input ref={input => this.inputElement = input} style={invisible} type="file" name="image" onChange={this.handleFile}/>
-                <Confirmation triggerDeletePlayer = {this.handleDelete}/>
+                <Confirmation triggerDelete = {this.handleDelete}/>
             </div>
         )
     }

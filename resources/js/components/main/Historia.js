@@ -1,5 +1,6 @@
 import React from 'react'
 import { Spring } from 'react-spring/renderprops';
+import { Link } from 'react-router-dom'
 import VisibilitySensor from "react-visibility-sensor";
 export default function Jogadores() {
     return (
@@ -17,7 +18,7 @@ export default function Jogadores() {
                                     <div style={props} className="div_component mt-3">
                                         <h1 className="col-12 my-5 text-whire titles bolder"><b>HISTÓRIA</b></h1>
                                         <h6 className="col-lg-5 col-md-6 col-sm-8 col-xs-12 mb-5 titles justify text-white lead">Confira um pouco da história do CRAC, único bicampeão do interior, e clube mais antigo da história de Goiás.</h6>
-                                        <button className="ml-4 p-2 col-sm-4 col-xs-4 col-md-2 bolder" style={button} >Clique aqui</button>
+                                        <Link className="ml-4 p-2 col-sm-4 col-xs-4 col-md-2 bolder" style={button} to = "/historia">Clique aqui</Link>
                                     </div>
                                 )}
                                 </Spring>
